@@ -44,6 +44,7 @@ import { ConfirmEqualValidatorDirective } from './_directives/confirm-equal-vali
 import { ProfilComponent } from './profil/profil.component';
 import {QuizComponent} from "./quiz/quiz.component";
 import {StorageService} from "./services/storage.service";
+import { OfferComponent } from './offer/offer.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import {StorageService} from "./services/storage.service";
     FooterComponent,
     QuizComponent,
     ConfirmEqualValidatorDirective,
-    ProfilComponent
+    ProfilComponent,
+    OfferComponent
   ],
   imports: [
     BrowserModule,
