@@ -1,0 +1,47 @@
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4 mt-4" *ngIf="isLoggedIn$ | async as isLoggedIn">
+
+  <!-- Call to action -->
+  <ul class="list-unstyled list-inline text-center py-2">
+    <li class="list-inline-item">
+      <h5 class="mb-1">{{msgHomeFooter}}</h5>
+    </li>
+  </ul>
+  <!-- Call to action -->
+
+  <hr>
+  <!-- Social buttons -->
+  <ul class="list-unstyled list-inline text-center">
+    <li class="list-inline-item">
+      <a class="btn-floating btn-fb mx-1">
+        <i class="inline"><a target="_blank" title="Facebook" href="#"><img src="{{imageLogoFB}}" alt="Facebook" /></a></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-tw mx-1">
+        <i class="inline"><a target="_blank" title="Twitter" href="#"><img src="{{imageLogoTwitter}}" alt="Twitter" /></a></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-gplus mx-1">
+        <i class="inline"><a target="_blank" title="Linkedin" href="#"><img src="{{imageLogoLinkedin}}" alt="Linkedin" /></a></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-li mx-1">
+        <i class="inline"><a target="_blank" title="Youtube" href="#"><img src="{{imageLogoYoutube}}" alt="Youtube" /></a></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-li mx-1">
+        <i class="inline"><a target="_blank" title="RSS" href="#"><img src="{{imageLogoRss}}" alt="RSS" /></a></i>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/bootstrap-tutorial/"></a>
+  </div>
+  <!-- Copyright -->
+</footer>

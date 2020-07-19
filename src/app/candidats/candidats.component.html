@@ -1,0 +1,33 @@
+<br/>
+<button type="button" class="btn btn-success" (click)="newCandidatFrom()"><i class="fa fa-user fa-fw"></i> Créer un candidat</button>
+
+<div class="mt-4" *ngIf="!displayCandidatForm">
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+    <tr>
+      <div [hidden]="true">
+        <th>ID</th>
+      </div>
+      <th>Pseudo</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Téléphone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let candidat of candidats">
+        <div [hidden]="true">
+            <td>{{candidat.id}}</td>
+        </div>
+            <td>{{candidat.pseudo}}</td>
+            <td>{{candidat.nom}}</td>
+            <td>{{candidat.prenom}}</td>
+            <td>{{candidat.email}}</td>
+            <td>{{candidat.telephone}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<app-candidat-form [showMePartially]="displayCandidatForm"></app-candidat-form>

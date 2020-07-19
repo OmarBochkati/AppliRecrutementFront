@@ -1,0 +1,26 @@
+<br/>
+
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Candidat</th>
+      <th>Date</th>
+      <th>Niveau</th>
+      <th>Nom du test</th>
+      <th>Note finale</th>
+      <th>Correction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let resultat of resultats">
+            <td>{{resultat.id}}</td>
+            <td>{{resultat.candidat}}</td>
+            <td>{{resultat.date | date: 'dd/MM/yyyy'}}</td>
+            <td>{{resultat.niveau}}</td>
+            <td>{{resultat.nomTest}}</td>
+            <td>{{resultat.noteFinale}}</td>
+            <td>{{resultat.correction}}</td>
+    </tr>
+  </tbody>
+</table>

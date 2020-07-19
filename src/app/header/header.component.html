@@ -1,0 +1,19 @@
+
+    <nav *ngIf="isLoggedIn$ | async as isLoggedIn">
+        <nav *ngIf="userRole$ | async as roleUser">
+        <a routerLink="/home">{{msgHomeLabel}}</a>
+        <!-- Add if ROLE_ADMIN condition -->
+        <a *ngIf="roleUser == 'ROLE_ADMIN'" routerLink="/candidats">{{msgHomeMenuCandidats}}</a>
+        <a routerLink="/resultats">{{msgHomeMenuResult}}</a>
+        <a *ngIf="roleUser == 'ROLE_ADMIN'" routerLink="/questionnaires">{{msgHomeMenuTests}}</a>
+        <!-- Add if ROLE_CANDIDAT condition -->
+        <a *ngIf="roleUser == 'ROLE_CANDIDAT'" routerLink="/questionnaires">{{msgHomeMenuTests}}</a>
+        <a *ngIf="roleUser == 'ROLE_CANDIDAT'" routerLink="/quizz">Quiz</a>
+        <a *ngIf="roleUser == 'ROLE_ADMIN'" routerLink="/quizz">Quiz</a>
+        <!-- Add if ROLE_CORRECTEUR condition -->
+        <a *ngIf="roleUser == 'ROLE_CORRECTEUR'" routerLink="/corrections">Correction</a>
+
+        <a routerLink="/profil">Profil</a>
+        <a routerLink="/deconnexion" (click)="logout()">{{msgHomeMenuDeconnexion}}</a>
+        </nav>
+    </nav>

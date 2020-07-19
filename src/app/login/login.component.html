@@ -1,0 +1,58 @@
+<div class="container">
+        <div class="card card-container" style="max-width: unset">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+    <h2>Login</h2>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate class="form-signin">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+            <div *ngIf="f.submitted && !username.valid" class="help-block text-danger">
+                <small>Nom d'utilisateur requis</small>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password">Mot de passe</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+            <div *ngIf="f.submitted && !password.valid" class="help-block text-danger">
+                <small>Mot de passe requis</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Login</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+          <!--  <a [routerLink]="['/register']" class="btn btn-link">Register</a> -->
+        </div>
+    </form>
+          <section class="feature-info-section">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                  <div class="feature-info feature-info-02 p-4 p-lg-5 bg-primary">
+                    <div class="feature-info-icon mb-3 mb-sm-0 text-dark">
+                      <i class="flaticon-team"></i>
+                    </div>
+                    <div class="feature-info-content text-white pl-sm-4 pl-0">
+                      <p>Jobseeker</p>
+                      <h5 class="text-white">Looking For Job?</h5>
+                    </div>
+                    <a class="ml-auto align-self-center" href="#">Apply now<i class="fas fa-long-arrow-alt-right"></i> </a>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="feature-info feature-info-02 p-4 p-lg-5 bg-dark">
+                    <div class="feature-info-icon mb-3 mb-sm-0 text-primary">
+                      <i class="flaticon-job-3"></i>
+                    </div>
+                    <div class="feature-info-content text-white pl-sm-4 pl-0">
+                      <p>Recruiter</p>
+                      <h5 class="text-white">Are You Recruiting?</h5>
+                    </div>
+                    <a class="ml-auto align-self-center" href="#">Post a job<i class="fas fa-long-arrow-alt-right"></i> </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+</div>
+
+</div>

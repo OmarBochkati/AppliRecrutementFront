@@ -1,0 +1,83 @@
+<div class="container" *ngIf="showMePartially">
+	<div class="row main">
+		<div class="main-login main-center">
+			<h5>Nouveau Questionnaire !</h5>
+			<form [formGroup]="myForm" novalidate (ngSubmit)="myForm.valid && register()" class="form-horizontal" method="post" action="#">
+
+				<div class="form-group">
+					<label for="name" class="cols-sm-2 control-label">Description *</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-align-center fa" aria-hidden="true"></i></span>
+							<input formControlName="description" [ngClass]="{
+										'is-valid': description.valid,
+										'is-invalid': description.invalid && (description.dirty || description.touched)
+										}" 
+							type="text" class="form-control" name="description" id="description" placeholder="Description test" />
+						</div>
+						<div *ngIf="description.errors  && (description.dirty || description.touched)" class="text-danger">
+							<small *ngIf="description.errors.required"> Description requise! </small>
+							<small *ngIf="description.errors.minlength"> Description doit contenir au moins 4 caractères! </small>
+							<small *ngIf="description.errors.maxlength"> Description nom doit contenir au plus 30 caractères! </small>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="name" class="cols-sm-2 control-label">Nom du test *</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-text-width fa" aria-hidden="true"></i></span>
+							<input formControlName="nomTest" [ngClass]="{
+										'is-valid': nomTest.valid,
+										'is-invalid': nomTest.invalid && (nomTest.dirty || nomTest.touched)
+										}" 
+							type="text" class="form-control" name="test" id="test" placeholder="Nom test" />
+						</div>
+						<div *ngIf="nomTest.errors  && (nomTest.dirty || nomTest.touched)" class="text-danger">
+							<small *ngIf="nomTest.errors.required"> Nom du test requis! </small>
+							<small *ngIf="nomTest.errors.maxlength"> Nom du test doit contenir au plus 10 caractères! </small>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="name" class="cols-sm-2 control-label">Limite de temps *</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+							<select formControlName="temps" class="form-control form-control-sm">
+								<option value="30">30 minutes</option>
+								<option value="45">45 minutes</option>
+								<option value="60">60 minutes</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="email" class="cols-sm-2 control-label">Maximum de Points *</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-star" aria-hidden="true"></i></span>
+							<input formControlName="maxPoint" [ngClass]="{
+										'is-valid': maxPoint.valid,
+										'is-invalid': maxPoint.invalid && (maxPoint.dirty || maxPoint.touched)
+										}" 
+							 type="number" min="0" class="form-control" name="maximumPoint" id="maximumPoint" placeholder="Maximum de points test" />
+						</div>
+						<div *ngIf="maxPoint.errors  && (maxPoint.dirty || maxPoint.touched)" class="text-danger">
+							<small *ngIf="maxPoint.errors.required"> Champs requis! </small>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group ">
+					<button class="w3-button w3-block w3-blue w3-hover-green w3-border w3-border-blue w3-round-large" type="submit" [disabled]="myForm.invalid">Créer</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<br/>
+<button type="button" class="btn btn-success" (click)="newQuizFrom()"><i class="fa fa-question-circle"></i> Créer un questionnaire</button>
+
+<div class="mt-4" *ngIf="!displayQuizForm">
+
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Description</th>
+      <th>Nom du test</th>
+      <th>Limite de temps</th>
+      <th>Moyenne Debutant</th>
+      <th>Moyenne Confirme</th>
+      <th>Moyenne Expert</th>
+    </tr>
+  </thead>
+  <tbody>
+  <!--
+    <tr *ngFor="let questionnaire of questionnaires">
+            <td>{{questionnaire.id}}</td>
+            <td><a href='tel:"+oData.TelephoneNumber+"'>{{questionnaire.description}}</a></td>
+            <td>{{questionnaire.nomTest}}</td>
+            <td>{{questionnaire.temps}}</td>
+            <td>{{questionnaire.moyenneDebutant}}</td>
+            <td>{{questionnaire.moyenneConfirme}}</td>
+            <td>{{questionnaire.moyenneExpert}}</td>
+    </tr>
+
+    -->
+  <tr *ngFor="let questionnaire of quizes">
+    <td>{{questionnaire.id}}</td>
+    <td><a href='tel:"+oData.TelephoneNumber+"'>{{questionnaire.desc}}</a></td>
+    <td>{{questionnaire.name}}</td>
+    <td>{{questionnaire.limitTemps}}</td>
+    <td>{{questionnaire.moyDeb}}</td>
+    <td>{{questionnaire.moyConf}}</td>
+    <td>{{questionnaire.moyExp}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<app-questionnaire-form [showMePartially]="displayQuizForm"></app-questionnaire-form>
