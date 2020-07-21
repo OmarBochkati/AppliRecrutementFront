@@ -38,19 +38,19 @@ export class CandidatFormComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private candidatService: CandidatService,
     private alertService: AlertService,
     private questionnaireService: QuestionnaireService
     ) { }
 
     ngOnInit(){
-      this.questionnaireService.getQuestionnaires().subscribe(res => { this.listQuestionnaires = res; 
+      this.questionnaireService.getQuestionnaires().subscribe(res => { this.listQuestionnaires = res;
         this.createFormControls();
         this.createForm();
         console.log(this.listQuestionnaires);
         this.listQuestionnaires.forEach(qcm => {if(qcm) this.fillingQuestionnairesForm(qcm) });
-        console.log(res); 
+        console.log(res);
         this.myForm.valueChanges.subscribe( val => {this.modelCandidat = val ;
         console.log(this.modelCandidat);
     });
@@ -115,9 +115,8 @@ export class CandidatFormComponent implements OnInit {
       .subscribe(
       data => {
         console.log(data);
-        // set success message and pass true paramater to persist the message after redirecting to the login page
-        this.alertService.success('Registration successful', true);
-        this.router.navigate(['/candidat']);
+        this.router.navigate(['/candidats']);
+        window.location.reload();
       },
       error => {
         this.alertService.error(error);
@@ -139,7 +138,7 @@ export class CandidatFormComponent implements OnInit {
     this.modelCandidat.questionnaires.forEach( (test, i) => {
       if(test){
         this.candidatToSubmit.questionnaires.push(this.listQuestionnaires[i]);
-      }  
+      }
     });
   }
 

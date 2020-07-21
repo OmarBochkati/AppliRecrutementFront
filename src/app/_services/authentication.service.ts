@@ -22,13 +22,16 @@ export class AuthenticationService {
     }
 
     /*
-    The BehaviorSubject keeps the latest value cached (in our case when the service is created the initial value is going to be false). 
+    The BehaviorSubject keeps the latest value cached (in our case when the service is created the initial value is going to be false).
     So when an Observer subscribes to the isLoggedIn(), the cached valued is going to be emitted right away.
      */
     private loggedIn = new BehaviorSubject<boolean>(false); // {1}
-    get isLoggedIn() {
-        return this.loggedIn.asObservable(); // {2}
-    }
+  get isLoggedIn() {
+    return this.loggedIn.asObservable(); // {2}
+  }
+  get isLoggedInHeader() {
+    return this.loggedIn.getValue(); // {2}
+  }
 
     constructor(private http: HttpClient) { }
 
@@ -68,7 +71,7 @@ export class AuthenticationService {
                     console.log(authUser);
                     this.userRole.next(authUser.authorities[0].authority)
                     this.currentPrincipalUser.next(authUser.username);
-                }); 
+                });
     };
 
     logout() {

@@ -6,6 +6,13 @@ import { CSHARP } from "../../data/csharp.data";
 import { DESIGNPATTERNS } from "../../data/designPatterns.data";
 @Injectable()
 export class QuizService {
+
+  quizList : any= [
+    { id: "javascript", name: "JavaScript", desc:"", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 },
+    { id: "aspnet", name: "Asp.Net", desc:"", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 },
+    { id: "csharp", name: "C Sharp", desc:"", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 },
+    { id: "designPatterns", name: "Design Patterns", desc:"", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 }
+  ];
   constructor(private http: HttpClient) {}
 
   get(type: string): any {
@@ -23,11 +30,10 @@ export class QuizService {
   }
 
   getAll() {
-    return [
-      { id: "javascript", name: "JavaScript", desc:"", limitTemps:"30 min", moyDeb:0,moyConf:0,moyExp:0 },
-      { id: "aspnet", name: "Asp.Net", desc:"", limitTemps:"30 min", moyDeb:0,moyConf:0,moyExp:0 },
-      { id: "csharp", name: "C Sharp", desc:"", limitTemps:"30 min", moyDeb:0,moyConf:0,moyExp:0 },
-      { id: "designPatterns", name: "Design Patterns", desc:"", limitTemps:"30 min", moyDeb:0,moyConf:0,moyExp:0 }
-    ];
+    return this.quizList;
   }
+
+  addQuizz(data) {
+    this.quizList.push(data)
+}
 }

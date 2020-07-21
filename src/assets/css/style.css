@@ -60,7 +60,7 @@ NOTE: This is main stylesheet of template, This file contains the styling for th
 [ End table content ]
 ======================================*/
 /*****************************
-	Typography 
+	Typography
 *****************************/
 body {
   font-family: "Poppins", sans-serif;
@@ -440,7 +440,7 @@ hr {
   background: #ff00ff !important; }
 
 .bg-dark {
-  background: #001935 !important; }
+  background: #ffc107 !important; }
 
 .bg-light {
   background: #f6f6f6 !important; }
@@ -450,7 +450,7 @@ hr {
 
 /* Page section margin padding */
 .space-ptb {
-  padding: 90px 0; }
+  padding: 90px 90px; }
 
 .space-pt {
   padding: 90px 0 0; }
@@ -1334,7 +1334,7 @@ hr {
   font-size: 12px; }
 
 /*****************************
-	Counter 
+	Counter
 *****************************/
 .counter {
   display: -webkit-box;
@@ -1559,7 +1559,7 @@ hr {
   font-weight: normal; }
 
 /*****************************
-	Owl carousel 
+	Owl carousel
 *****************************/
 .owl-nav-top-center .owl-nav .owl-next {
   right: 40%;
@@ -1649,7 +1649,7 @@ hr {
   background: #ff00ff; }
 
 /*****************************
-    Pricing 
+    Pricing
 *****************************/
 .pricing-plan {
   border: 1px solid #f6f6f6;
@@ -1792,7 +1792,7 @@ hr {
   border-color: #ff00ff !important; }
 
 /*****************************
-	Button 
+	Button
 *****************************/
 .btn {
   -webkit-transition: all 0.3s ease-in-out;
@@ -2124,7 +2124,7 @@ button {
     color: #969696; }
 
 /*****************************
-	Datetimepicker 
+	Datetimepicker
 *****************************/
 .bootstrap-datetimepicker-widget table td.active {
   background-color: #ff00ff; }
@@ -2147,7 +2147,7 @@ button {
   width: 19rem; }
 
 /*****************************
-  Header 
+  Header
 *****************************/
 .header {
   background: #ffffff; }
@@ -2592,7 +2592,7 @@ button {
 .header .is-sticky {
   position: fixed !important;
   width: 100%;
-  background: #001935;
+  background: #ffc107;
   -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
           box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   top: 0;
@@ -4961,7 +4961,7 @@ iframe {
     transition: all 0.3s ease-in-out; }
 
 /*****************************
-    Not found 
+    Not found
 *****************************/
 .notfound-404 {
   height: 230px;
@@ -5054,7 +5054,7 @@ iframe {
   color: #0077b5; }
 
 /*****************************
-	Login 
+	Login
 *****************************/
 .login-register fieldset {
   border: 1px solid #eeeeee;

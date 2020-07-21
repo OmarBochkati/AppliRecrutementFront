@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AlertService, QuestionnaireService } from '../_services/index';
 
 import { Questionnaire } from '../_models/index';
+import {QuizService} from "../services/quiz.service";
 
 @Component({
   selector: 'app-questionnaire-form',
@@ -16,7 +17,7 @@ export class QuestionnaireFormComponent implements OnInit {
   @Input() showMePartially: boolean;
 
   private questionnaireForm: any;
-  
+
   myForm: FormGroup;
   description: FormControl;
   nomTest: FormControl;
@@ -27,13 +28,14 @@ export class QuestionnaireFormComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private alertService: AlertService,
-    private questionnaireService: QuestionnaireService
+    private questionnaireService: QuestionnaireService,
+    private quizService: QuizService
   ) { }
 
   ngOnInit() {
     this.createFormControls();
     this.createForm();
-    this.myForm.valueChanges.subscribe( val => {this.questionnaireForm = val ; console.log(val)} 
+    this.myForm.valueChanges.subscribe( val => {this.questionnaireForm = val ; console.log(val)}
     );
   }
 
@@ -59,6 +61,8 @@ export class QuestionnaireFormComponent implements OnInit {
 
   register() {
     console.log(this.questionnaireForm);
+    let quizdata= { id: this.questionnaireForm["nomTest"], name: this.questionnaireForm["nomTest"], desc:this.questionnaireForm["description"], limitTemps:this.questionnaireForm["temps"], moyDeb:0,moyConf:0,moyExp:0 }
+    this.quizService.addQuizz(quizdata);
     this.questionnaireService.create(this.questionnaireForm)
       .subscribe(
       data => {

@@ -1,20 +1,25 @@
 
+      <div class="navbar-collapse collapse justify-content-start" *ngIf="isLoggedIn$ | async as isLoggedIn">
+        <ul class="nav navbar-nav" *ngIf="userRole$ | async as roleUser">
+          <li class="nav-item "><a class="nav-link" routerLink="/home">{{msgHomeLabel}}</a></li>
+          <!-- Add if ROLE_ADMIN condition -->
+          <li class="nav-item "><a class="nav-link" *ngIf="roleUser == 'ROLE_ADMIN'" routerLink="/candidats">{{msgHomeMenuCandidats}}</a></li>
+          <li class="nav-item "><a class="nav-link" routerLink="/resultats">{{msgHomeMenuResult}}</a></li>
+          <li class="nav-item "><a class="nav-link" *ngIf="roleUser == 'ROLE_ADMIN'" routerLink="/questionnaires">{{msgHomeMenuTests}}</a></li>
+          <!-- Add if ROLE_CANDIDAT condition -->
+          <li class="nav-item "><a class="nav-link" *ngIf="roleUser == 'ROLE_CANDIDAT'" routerLink="/questionnaires">{{msgHomeMenuTests}}</a></li>
+          <li class="nav-item "><a class="nav-link" *ngIf="roleUser == 'ROLE_CANDIDAT'" routerLink="/quizz">Quiz</a></li>
+          <li class="nav-item "><a class="nav-link" *ngIf="roleUser == 'ROLE_ADMIN'" routerLink="/quizz">Quiz</a></li>
+          <!-- Add if ROLE_CORRECTEUR condition -->
+          <li class="nav-item "><a class="nav-link" *ngIf="roleUser == 'ROLE_CORRECTEUR'" routerLink="/corrections">Correction</a></li>
+
+          <li class="nav-item "><a class="nav-link" routerLink="/profil">Profil</a></li>
+          <li class="nav-item "><a class="nav-link" routerLink="/offer">Offer</a></li>
+          <li class="nav-item "><a class="nav-link" routerLink="/deconnexion" (click)="logout()">{{msgHomeMenuDeconnexion}}</a></li>
+        </ul>
+      </div>
     <nav *ngIf="isLoggedIn$ | async as isLoggedIn">
         <nav *ngIf="userRole$ | async as roleUser">
-        <a routerLink="/home">{{msgHomeLabel}}</a>
-        <!-- Add if ROLE_ADMIN condition -->
-        <a *ngIf="roleUser == 'ROLE_ADMIN'" routerLink="/candidats">{{msgHomeMenuCandidats}}</a>
-        <a routerLink="/resultats">{{msgHomeMenuResult}}</a>
-        <a *ngIf="roleUser == 'ROLE_ADMIN'" routerLink="/questionnaires">{{msgHomeMenuTests}}</a>
-        <!-- Add if ROLE_CANDIDAT condition -->
-        <a *ngIf="roleUser == 'ROLE_CANDIDAT'" routerLink="/questionnaires">{{msgHomeMenuTests}}</a>
-        <a *ngIf="roleUser == 'ROLE_CANDIDAT'" routerLink="/quizz">Quiz</a>
-        <a *ngIf="roleUser == 'ROLE_ADMIN'" routerLink="/quizz">Quiz</a>
-        <!-- Add if ROLE_CORRECTEUR condition -->
-        <a *ngIf="roleUser == 'ROLE_CORRECTEUR'" routerLink="/corrections">Correction</a>
 
-        <a routerLink="/profil">Profil</a>
-        <a routerLink="/offer">Offer</a>
-        <a routerLink="/deconnexion" (click)="logout()">{{msgHomeMenuDeconnexion}}</a>
         </nav>
     </nav>
