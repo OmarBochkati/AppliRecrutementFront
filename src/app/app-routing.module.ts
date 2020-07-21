@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/index';
 import {QuizComponent} from "./quiz/quiz.component";
 import {OfferComponent} from "./offer/offer.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'aide', component: AideComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'offer', component: OfferComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'profil', component: ProfilComponent },
   { path: 'deconnexion', component: LoginComponent, canActivate: [AuthGuard]},
   // otherwise redirect to home

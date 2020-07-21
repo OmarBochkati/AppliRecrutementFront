@@ -7,15 +7,19 @@ import { DESIGNPATTERNS } from "../../data/designPatterns.data";
 @Injectable()
 export class QuizService {
 
-  quizList : any= [
-    { id: "javascript", name: "JavaScript", desc:"", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 },
-    { id: "aspnet", name: "Asp.Net", desc:"", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 },
-    { id: "csharp", name: "C Sharp", desc:"", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 },
-    { id: "designPatterns", name: "Design Patterns", desc:"", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 }
-  ];
+  quizList : any;
   constructor(private http: HttpClient) {
-    if (localStorage.getItem('quizList') != undefined)
+    if (!(localStorage.getItem('quizList') === null))
+      this.quizList= JSON.parse(localStorage.getItem('quizList'));
+    else {
+      this.quizList = [
+        { id: "javascript", name: "JavaScript", desc:"Test de connaissance sur JavaScript", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 },
+        { id: "aspnet", name: "Asp.Net", desc:"Test de connaissance sur ASP.NET", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 },
+        { id: "csharp", name: "C Sharp", desc:"Test de connaissance sur C#", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 },
+        { id: "designPatterns", name: "Design Patterns", desc:"Test de connaissance sur les Design Patterns", limitTemps:"30", moyDeb:0,moyConf:0,moyExp:0 }
+      ];
       localStorage.setItem('quizList', JSON.stringify(this.quizList));
+    }
   }
 
   get(type: string): any {
@@ -33,15 +37,32 @@ export class QuizService {
   }
 
   getAll() {
-    if (localStorage.getItem('quizList') != undefined)
-       return JSON.parse(localStorage.getItem('quizList'));
+    if (!(localStorage.getItem('quizList') === null))
+    {
+      console.log("getting it from localstorage",localStorage.getItem('quizList') )
+      return JSON.parse(localStorage.getItem('quizList'));
+    }
     else
       return this.quizList;
   }
 
   addQuizz(data) {
-    let tempdata = JSON.parse(localStorage.getItem('quizList')).push(data);
-    localStorage.setItem('quizList', JSON.stringify(tempdata))
-    this.quizList.push(data)
+    if (!(localStorage.getItem('quizList') === null))
+    {
+      let tempdata = JSON.parse(localStorage.getItem('quizList'));
+      console.log("setting it in localstorage ", tempdata);
+      console.log(data);
+      console.log(tempdata);
+      tempdata.push(data)
+      localStorage.setItem('quizList', JSON.stringify(tempdata));
+      this.quizList= JSON.parse(localStorage.getItem('quizList'));
+      console.log(this.quizList);
+    }
+    else
+    {
+      this.quizList.push(data);
+      localStorage.setItem('quizList', JSON.stringify(this.quizList));
+    }
+
 }
 }

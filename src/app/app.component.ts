@@ -5,12 +5,13 @@ import { environment } from '../environments/environment';
 
 import { HeaderComponent } from './header/header.component';
 import { AuthenticationService } from './_services/authentication.service';
+import {Router} from "@angular/router";
 
 declare function require(path: string);
 @Component({
   selector: 'app-root',
   template: `
-  <section class="" >
+
     <header class="header bg-dark">
       <nav class="navbar navbar-static-top navbar-expand-lg header-sticky">
         <div class="container-fluid">
@@ -23,14 +24,19 @@ declare function require(path: string);
             <img class="img-fluid" src="{{imageLogo}}" height="70px" alt="logo">
           </a>
           <app-header></app-header>
-          <div class="add-listing">
+          <div  class="add-listing" style="flex: auto;">
             <div *ngIf="isLogged" class="login d-inline-block mr-4">
               <a routerLink="/login"><i class="far fa-user pr-2" ></i>Sign in</a>
             </div>
             <div *ngIf="authenticatedUser$ | async as authenticatedUser" class="login d-inline-block mr-4">
               <a style="color: #ffffff" ><i class="far fa-user pr-2" ></i>Bienvenue {{authenticatedUser}}</a>
             </div>
-            <a *ngIf="authenticatedUser$ | async as authenticatedUser" class="btn btn-white btn-md" href="#"> <i class="fas fa-plus-circle"></i>Post a job</a>
+            <span *ngIf="userRole$ | async as roleUser">
+              <a *ngIf="roleUser == 'ROLE_CORRECTEUR'" class="btn btn-white btn-md" href="#"> <i class="fas fa-plus-circle"></i>Post a job</a>
+            </span>
+            <span *ngIf="isLogged === false">
+              <a *ngIf="isLogged === false" class="btn btn-white btn-md" href="#" (click)="logout()"> <i class="fa fa-sign-out"></i>Logout</a>
+            </span>
           </div>
         </div>
       </nav>
@@ -57,6 +63,7 @@ export class AppComponent implements OnInit {
   private msgHomeFooter = environment.default_home_footer;
   public authenticatedUser$: Observable<string>;
   public isLogged: boolean;
+  userRole$: Observable<string>;
 
   imageLogoTwitter = require('assets/images/logo_twitter.png');
   imageLogoLinkedin = require('assets/images/logo_linkedin.png');
@@ -67,6 +74,7 @@ export class AppComponent implements OnInit {
   imageLogo = require('assets/img/Officium.png');
 
   constructor(
+    private router:Router,
     private authService: AuthenticationService
   ) {
   }
@@ -75,5 +83,21 @@ export class AppComponent implements OnInit {
     console.log("App componenet Init");
     this.authenticatedUser$ = this.authService.curentUser;
     this.isLogged = this.authService.isLoggedInHeader;
+    this.authService.getUserRole.subscribe((value) => {
+      if (value) {
+        console.log(value);
+        this.userRole$ = this.authService.getUserRole;
+      }else if(localStorage.getItem('currentUser')){
+        console.log(value);
+        this.authService.validateToken;
+      }
+    });
+  }
+  logout() {
+    console.log("log out");
+    this.authService.logout();
+    this.userRole$ = undefined;
+    this.isLogged = false;
+    this.router.navigate(["/login"]);
   }
 }
